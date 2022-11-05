@@ -9,12 +9,16 @@ float size = 1; //to zoom in/out !USING ANY NUMBER THATS SMALLER THAN 1 CAN MAKE
 float formula; // used to change pattern
 
 GSlider colorSlider;
-String status;
+String sliderStatus;
+
+GTextField formulaInput;
+String textFieldStatus;
 
 float pixelCount; // amount of pixels that need to be "painted"
 float  colorRange = 0; // used to decide how every point is coloured
 
 void setup() {
+  
   frameRate(2147483647);
   smooth();
   fullScreen();
@@ -29,22 +33,32 @@ void setup() {
 
   pixelCount = width*height/(size*size);
 
+  formulaInput = new GTextField(this,0,height-50,300,50);
+  formulaInput.setText("Enter Formula");
+
   colorSlider = new GSlider(this, width-300, height-50, 300, 50, 20);
   colorSlider.setShowValue(true);
   colorSlider.setOpaque(true);
 }
 
+public void handleTextEvents(GEditableTextControl textcontrol, GEvent event){
+  textFieldStatus = event.toString();
+}
+
 public void handleSliderEvents(GValueControl slider, GEvent event) {
-  status = event.toString();
+  sliderStatus = event.toString();
 }
 
 private void updateFormula(){
-  formula = sq(x-width/2)+sq(y-height/2)+x+y; // use this to create new very cool and  E  P  I  C  graphicxxxxs ---> formula equal to y²
+  // textFieldStatus.replace("x","(" + x + ")");
+  // textFieldStatus.replace("y","(" + y + ")");
+  
+  formula = pow(x,2)+pow(y,2); // use this to create new very cool and  E  P  I  C  graphicxxxxs ---> formula equal to y²
 }
 
 void draw() {
-
-  if (status == null || status.equals("RELEASED")) {
+  //System.out.println(formulaInput.getText());
+  if (sliderStatus == null || sliderStatus.equals("RELEASED")) {
     for(x = width;x > 0; x--){
       for(y = height;y > 0;y--){
         this.updateFormula(); 
@@ -67,6 +81,6 @@ void draw() {
         x = 0;
       }
     }
-   status = "";
+   sliderStatus = "";
   }
 }

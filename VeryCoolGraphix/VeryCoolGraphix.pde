@@ -34,7 +34,7 @@ void setup() {
   pixelCount = width*height/(size*size);
 
   formulaInput = new GTextField(this,0,height-50,300,50);
-  formulaInput.setText("Enter Formula");
+  formulaInput.setText("x+1+x");
 
   colorSlider = new GSlider(this, width-300, height-50, 300, 50, 20);
   colorSlider.setShowValue(true);
@@ -48,16 +48,31 @@ public void handleTextEvents(GEditableTextControl textcontrol, GEvent event){
 public void handleSliderEvents(GValueControl slider, GEvent event) {
   sliderStatus = event.toString();
 }
+private static int stringToInt(){
+  String input = formulaInput.getText();
+  String[] chars = input.split("");
+  input = "";
+  for(String ch : chars){
+    if(!(ch.equals("(") || ch.equals(")"))){
+      input
+    }
+  }
+
+  return 
+}
+
 
 private void updateFormula(){
-  // textFieldStatus.replace("x","(" + x + ")");
-  // textFieldStatus.replace("y","(" + y + ")");
   
-  formula = pow(x,2)+pow(y,2); // use this to create new very cool and  E  P  I  C  graphicxxxxs ---> formula equal to y²
+  
+  // int i = 0;
+  // while(i < tex)
+  // int parsedFormula = 0
+  formula = formulaInput.getValueF(); // use this to create new very cool and  E  P  I  C  graphicxxxxs ---> formula equal to y²
 }
 
 void draw() {
-  //System.out.println(formulaInput.getText());
+ 
   if (sliderStatus == null || sliderStatus.equals("RELEASED")) {
     for(x = width;x > 0; x--){
       for(y = height;y > 0;y--){

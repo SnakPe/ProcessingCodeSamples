@@ -1,7 +1,9 @@
 public class PhysObject{
     protected float x, y;
     protected float xVel, yVel;
-    private float orgY; 
+    private float orgY;
+    private float xDrag = 0.5;
+    private float yDrag = 0.1; 
     PhysObject(){
         x = 500;
         y = 500;
@@ -10,13 +12,13 @@ public class PhysObject{
         orgY = 0;
     }
     void draw(){
-        float xDrag = 0.5;
-        float yDrag = 0.1;
 
         y-= yVel;
         yVel -= yDrag;
         orgY += yVel;
         if(orgY < 0){
+            System.out.println("yVel:"+yVel+" orgY:"+orgY+" y:"+ y);
+            if(yVel != orgY)y-=yVel;
             yVel = 0;
             orgY = 0;
         }
@@ -40,27 +42,26 @@ int oldKC;
 void draw(){
     background(255);
     test.draw();
-    
-    switch(key){
-        case ' ':
-            test.yVel = 3;
-            break;
-        default:
-            key = 0;
-            break;
-    }
-    
-    if(oldKC != keyCode)switch(keyCode){
+    if(keyPressed){
+        switch(key){
+            case ' ':
+                
+                test.yVel = 3;
+                break;
+        }
         
-        case RIGHT:
-            test.xVel = 3;
-            break;
-        case LEFT:
-            test.xVel = -3;
-            break;
-        default:
+        switch(keyCode){
+            
+            case RIGHT:
+                test.xVel = 3;
+                break;
+            case LEFT:
+                test.xVel = -3;
+                break;
+            default:
 
-            break;
+                break;
+        }
     }
-    oldKC = keyCode;
+    
 }

@@ -27,7 +27,7 @@ void draw() {
   prevY = y;
   
   x = width/2  + Switch*15*t;  
-  y = height/2 + t*t        ;
+  y = height/2 + t*sin(t)       ;
   
   if (x > width) {
     x = width;

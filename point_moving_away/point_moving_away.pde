@@ -1,5 +1,5 @@
-int x = 300;
-int y = 300;
+int x = 0;
+int y = 0;
 int speed = 10; // I wonder what this does dumbass
 int won = 0;
 
@@ -7,11 +7,11 @@ void setup() {
   fullScreen();
   rectMode(CENTER);
   textSize(20);
+  x = width/2;
+  y = height/2;
 }
 
 void draw() {
-  println(won);
-  
   background(255);
   
   stroke(0,0,0,125);
@@ -35,7 +35,7 @@ void draw() {
   if (mouseY < y && mouseY > y - 50 && mouseX - x < 51 && mouseX - x > -51) {
     y = y + speed;
   }
-  if ( key == TAB) {    // resets point
+  if (keyCode == TAB) {    // resets point
     x = width/2;
     y = height/2;
   }

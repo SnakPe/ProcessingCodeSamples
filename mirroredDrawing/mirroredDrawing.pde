@@ -33,7 +33,6 @@ private void drawLinesWithBorder(){
 }
 void draw() {
     background(255);
-
   if(mousePressed){
     stroke(255,0,0);
     strokeWeight(1);

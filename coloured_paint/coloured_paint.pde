@@ -17,7 +17,6 @@ void draw() {
     background(255);
   }
   if (pmouseX != mouseX || pmouseY != mouseY) {
-    println(rise);
     if (colobr > 254) {
       colobr = 0;
     }

@@ -5,7 +5,7 @@ int ranNumbX = 0;          // "random Number X"
 int ranNumbY = 0;          // "random Number Y"
 int s = 12;               // Speed of circle
 
-float colobr = 0;         // This program is a mix of 'coloured_paintXDDfuck' and 'moving_circle'
+float colobr = 0; 
 float rise = 0.05;
 
 void setup() {
